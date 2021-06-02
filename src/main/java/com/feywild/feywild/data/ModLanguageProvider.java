@@ -13,7 +13,6 @@ public class ModLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
 
-        //Tried: languages, Languages, lang
         String locale = this.getName().replace("Languages: ", "");
 
         switch (locale) {

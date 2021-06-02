@@ -1,6 +1,7 @@
 package com.feywild.feywild.data;
 
 import com.feywild.feywild.FeywildMod;
+import net.minecraft.data.AdvancementProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -36,6 +37,7 @@ public class DataGenerators {
         generator.addProvider(new ModItemTagsProvider(generator, block_tags, existingFileHelper));
 
         //   generator.addProvider(new ModLootTableProvider(generator));
+        generator.addProvider(new AdvancementProvider(generator));
 
     }
 

@@ -69,11 +69,11 @@ public class ModItems {
                     () -> new BlockItem(ModBlocks.MANDRAKE_CROP.get(), new Item.Properties().tab(FeywildMod.FEYWILD_TAB)));
 
     public static final RegistryObject<Item> SUNFLOWER_SEEDS =
-            Registration.ITEMS.register("sunflower_seeds",SunflowerSeeds::new
+            Registration.ITEMS.register("sunflower_seeds", SunflowerSeeds::new
             );
 
     public static final RegistryObject<Item> DANDELION_SEEDS =
-            Registration.ITEMS.register("dandelion_seeds",DandelionSeeds::new
+            Registration.ITEMS.register("dandelion_seeds", DandelionSeeds::new
             );
 
     /* MUSIC DISC */
@@ -158,6 +158,10 @@ public class ModItems {
     public static final RegistryObject<Item> SUMMONING_SCROLL_DWARF_BLACKSMITH =
             Registration.ITEMS.register("summoning_scroll_dwarf_blacksmith",
                     SummoningScrollDwarfBlacksmith::new);
+
+    public static final RegistryObject<Item> TELEPORTATION_SCROLL =
+            Registration.ITEMS.register("teleportation_scroll",
+                    TeleportationScroll::new);
 
     //METHODES
 

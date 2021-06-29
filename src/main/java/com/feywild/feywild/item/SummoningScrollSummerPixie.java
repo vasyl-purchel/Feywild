@@ -46,7 +46,7 @@ public class SummoningScrollSummerPixie extends Item {
             context.getLevel().addFreshEntity(entity);
             context.getPlayer().getItemInHand(context.getHand()).shrink(1);
 
-            //  entity.playSound(ModSoundEvents.SUMMONING_SUMMER_PIXIE.get(), 1, 1);
+            //entity.playSound(ModSoundEvents.SUMMONING_SUMMER_PIXIE.get(), 1, 1);
 
             /* QUEST */
 

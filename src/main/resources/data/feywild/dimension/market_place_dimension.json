@@ -10,7 +10,7 @@
         },
         {
           "height": 60,
-          "block": "minecraft:sandstone"
+          "block": "minecraft:grass_block"
         }
       ],
       "biome": "feywild:blossoming_wealds",

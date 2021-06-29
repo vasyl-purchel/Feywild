@@ -8,6 +8,8 @@ import net.minecraft.world.World;
 
 public class ModDimensions {
 
+    //https://minecraft.fandom.com/wiki/Custom_dimension
+
     public static RegistryKey<World> Market_Place_Dimension;
 
     public static void register() {

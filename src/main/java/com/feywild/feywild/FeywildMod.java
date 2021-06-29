@@ -19,6 +19,7 @@ import com.feywild.feywild.util.Configs.Config;
 import com.feywild.feywild.util.Registration;
 import com.feywild.feywild.world.biome.ModBiomes;
 import com.feywild.feywild.world.biome.ModSurfaceBuilders;
+import com.feywild.feywild.world.dimension.ModDimensions;
 import com.feywild.feywild.world.feature.ModFeatures;
 import com.feywild.feywild.world.structure.ModConfiguredStructures;
 import com.feywild.feywild.world.structure.ModStructures;
@@ -147,6 +148,8 @@ public class FeywildMod {
         ModSurfaceBuilders.register();
         MinecraftForge.EVENT_BUS.register(new ModEvents());
         ModEntityTypes.register();
+
+        ModDimensions.register();
 
     }
 

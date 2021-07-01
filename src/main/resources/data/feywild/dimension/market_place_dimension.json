@@ -17,7 +17,11 @@
       "lakes": false,
       "features": true,
       "structures": {
-        "structures": {}
+        "feywild:library": {
+          "spacing": 20,
+          "separation": 10,
+          "salt": 1
+        }
       }
     }
   }

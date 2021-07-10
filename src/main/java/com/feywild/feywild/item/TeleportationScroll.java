@@ -68,7 +68,7 @@ public class TeleportationScroll extends Item {
                         entity.addTag("z" + pos.getZ());
                         entity.changeDimension(marketWorld, new MarketPlaceTeleporter(new BlockPos(0,0,0), true));
 
-                        if(entity.level.getBlockState(entity.blockPosition().above(9).west(2).south(1)).equals(Blocks.GOLD_BLOCK.defaultBlockState()))
+                        if(!entity.level.getBlockState(entity.blockPosition().above(9).west(2).south(1)).equals(Blocks.GOLD_BLOCK.defaultBlockState()))
                         entity.level.setBlock(entity.blockPosition().below(), Blocks.STONE.defaultBlockState(),2);
 
                     }

@@ -1,13 +1,18 @@
 {
-  "type": "minecraft:overworld",
+  "type": "feywild:market_place_dimension",
   "generator": {
-    "biome_source": {
-      "seed": 0,
-      "large_biomes": false,
-      "type": "minecraft:vanilla_layered"
-    },
-    "seed": 0,
-    "settings": "minecraft:overworld",
-    "type": "minecraft:noise"
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "minecraft:the_void",
+      "layers": [
+        {
+          "block": "minecraft:air",
+          "height": 1
+        }
+      ],
+      "structures": {
+        "structures": {}
+      }
+    }
   }
 }

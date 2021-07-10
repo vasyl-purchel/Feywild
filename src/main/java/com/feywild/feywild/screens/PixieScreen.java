@@ -8,7 +8,9 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -19,12 +21,14 @@ public class PixieScreen extends Screen {
     int lines, quest;
     int xPos = 0;
     boolean canSkip;
+    LivingEntity entity;
 
-    public PixieScreen(ITextComponent name, int quest, int lines, boolean canSkip) {
+    public PixieScreen(ITextComponent name, int quest, int lines, boolean canSkip, LivingEntity entity) {
         super(name);
         this.lines = lines;
         this.quest = quest;
         this.canSkip = canSkip;
+        this.entity = entity;
     }
 
     @Override
@@ -38,6 +42,8 @@ public class PixieScreen extends Screen {
         } else {
             drawTextLines(this.width / 4, matrixStack);
         }
+
+        InventoryScreen.renderEntityInInventory(this.width / 9,this.height/2 + 140,100,(float)(this.width / 9 +20) - mouseX, (float)(this.height/2) - mouseY, this.entity);
     }
 
     @Override

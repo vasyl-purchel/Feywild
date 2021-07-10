@@ -161,7 +161,7 @@ public class ModItems {
                     SummoningScrollDwarfBlacksmith::new);
 
     //Teleport scroll
-    public static final RegistryObject<Item> TELEPORT_SCROLL = Registration.ITEMS.register("teleport_scroll", TeleportationScroll::new);
+    public static final RegistryObject<Item> TELEPORT_SCROLL = Registration.ITEMS.register("teleportation_scroll", TeleportationScroll::new);
 
     private static <T extends Item> RegistryObject<T> registerBasedOnConfig(String name, T object, boolean shouldRegister) {
         if (shouldRegister) {

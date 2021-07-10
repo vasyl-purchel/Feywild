@@ -1,28 +1,13 @@
 {
-  "type": "feywild:market_place_dimension",
+  "type": "minecraft:overworld",
   "generator": {
-    "type": "minecraft:flat",
-    "settings": {
-      "layers": [
-        {
-          "height": 1,
-          "block": "minecraft:bedrock"
-        },
-        {
-          "height": 60,
-          "block": "minecraft:grass_block"
-        }
-      ],
-      "biome": "feywild:blossoming_wealds",
-      "lakes": false,
-      "features": true,
-      "structures": {
-        "feywild:library": {
-          "spacing": 20,
-          "separation": 10,
-          "salt": 1
-        }
-      }
-    }
+    "biome_source": {
+      "seed": 0,
+      "large_biomes": false,
+      "type": "minecraft:vanilla_layered"
+    },
+    "seed": 0,
+    "settings": "minecraft:overworld",
+    "type": "minecraft:noise"
   }
 }

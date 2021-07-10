@@ -43,13 +43,13 @@ public class PumpkinCarverGoal extends Goal {
         }
         count--;
 
-        if (count <= 0 && block.getBlock() != Blocks.JACK_O_LANTERN.getBlock()) {
+        if (count <= 0 && block.getBlock() != Blocks.JACK_O_LANTERN.getBlock() && !worldLevel.getBlockState(pumpkinPosition).isAir()) {
             pumpkinCarving();
             reset();
 
         } else if (count == 110 && block.getBlock() != Blocks.JACK_O_LANTERN.getBlock()) {
             spellCasting();
-        } else if (count <= 100) {
+        } else if (count <= 100 && block.getBlock() != Blocks.JACK_O_LANTERN.getBlock()) {
             entity.lookAt(EntityAnchorArgument.Type.EYES, this.targetPos);
         }
 

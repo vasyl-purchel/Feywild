@@ -7,10 +7,15 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.test.StructureHelper;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameType;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.Tags;
@@ -68,8 +73,15 @@ public class TeleportationScroll extends Item {
                         entity.addTag("z" + pos.getZ());
                         entity.changeDimension(marketWorld, new MarketPlaceTeleporter(new BlockPos(0,0,0), true));
 
-                        if(!entity.level.getBlockState(entity.blockPosition().above(9).west(2).south(1)).equals(Blocks.GOLD_BLOCK.defaultBlockState()))
-                        entity.level.setBlock(entity.blockPosition().below(), Blocks.STONE.defaultBlockState(),2);
+                        if(!entity.level.getBlockState(entity.blockPosition().below()).equals(Blocks.GOLD_BLOCK.defaultBlockState())){
+                            StructureHelper.spawnStructure("feywild:market", entity.blockPosition().below(4).east(2), Rotation.NONE,1,(ServerWorld) entity.level,true).loadStructure((ServerWorld) entity.level);
+                            entity.level.setBlock(entity.blockPosition().below(),Blocks.GOLD_BLOCK.defaultBlockState(),2);
+                        }
+
+                        entity.addEffect(new EffectInstance(Effects.BLINDNESS,60,60));
+                        entity.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN,60,60));
+                        entity.setGameMode(GameType.ADVENTURE);
+
 
                     }
                 }

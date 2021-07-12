@@ -4,6 +4,7 @@ import com.feywild.feywild.FeywildMod;
 import com.feywild.feywild.block.entity.DwarvenAnvilEntity;
 import com.feywild.feywild.block.entity.ElectrifiedGroundTileEntity;
 import com.feywild.feywild.block.entity.FeyAltarBlockEntity;
+import com.feywild.feywild.block.entity.MarketMasterEntity;
 import com.feywild.feywild.block.trees.*;
 import com.feywild.feywild.util.Registration;
 import net.minecraft.block.*;
@@ -34,13 +35,19 @@ public class ModBlocks {
 
     public static final RegistryObject<Block>  ELECTRIFIED_GROUND = register("electrified_ground", ElectrifiedGround::new, false);
 
-
-    /* TILE ENTITIES */
+    public static final RegistryObject<Block> MARKET_MASTER = register("market_master",
+            MarketMaster::new, false);
 
     public static final RegistryObject<Block> DWARVEN_ANVIL = register("dwarven_anvil", DwarvenAnvil::new, true);
 
+    /* TILE ENTITIES */
+
     public static final RegistryObject<TileEntityType<ElectrifiedGroundTileEntity>> ELECTRIFIED_GROUND_ENTITY = registerTile("electrified_ground_entity",
             () -> TileEntityType.Builder.of(ElectrifiedGroundTileEntity::new, ELECTRIFIED_GROUND.get()).build(null));
+
+    public static final RegistryObject<TileEntityType<MarketMasterEntity>> MARKET_MASTER_ENTITY = registerTile("market_master_entity",
+            () -> TileEntityType.Builder.of(MarketMasterEntity::new, MARKET_MASTER.get()).build(null));
+
 
     public static final RegistryObject<TileEntityType<DwarvenAnvilEntity>> DWARVEN_ANVIL_ENTITY = registerTile("dwarven_anvil_entity",
             () -> TileEntityType.Builder.of(DwarvenAnvilEntity::new, DWARVEN_ANVIL.get()).build(null));

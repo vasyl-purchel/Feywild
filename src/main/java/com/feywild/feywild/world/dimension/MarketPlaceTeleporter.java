@@ -23,7 +23,7 @@ public class MarketPlaceTeleporter implements ITeleporter {
 
         entity = repositionEntity.apply(false);
 
-        double y = 61;
+        double y = 64;
 
         if (!insideDimension) {
             y = thisPos.getY();

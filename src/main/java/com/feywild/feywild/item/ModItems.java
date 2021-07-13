@@ -4,15 +4,20 @@ import com.feywild.feywild.FeywildMod;
 import com.feywild.feywild.block.ModBlocks;
 import com.feywild.feywild.util.Configs.Config;
 import com.feywild.feywild.util.Registration;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.MinecraftVersion;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.fml.RegistryObject;
+
+import java.security.Provider;
+import java.util.function.Supplier;
 
 public class ModItems {
 
@@ -169,6 +174,9 @@ public class ModItems {
         }
         return null;
     }
+
+    public static final RegistryObject<Item> DEBUG_STICK = Registration.ITEMS.register("debug_stick", TheStick::new);
+
 
     //METHODES
 

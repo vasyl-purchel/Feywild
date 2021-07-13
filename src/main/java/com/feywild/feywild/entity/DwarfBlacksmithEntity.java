@@ -52,8 +52,8 @@ public class DwarfBlacksmithEntity extends TraderEntity implements IAnimatable {
     private List<Integer> tradeId = new LinkedList<>();
     private int levelInt = 1;
 
-    public DwarfBlacksmithEntity(EntityType<? extends TraderEntity> type, World worldIn, boolean isTamed) {
-        super(type, worldIn, isTamed);
+    public DwarfBlacksmithEntity(EntityType<? extends TraderEntity> type, World worldIn, boolean isTamed, int dwarfType) {
+        super(type, worldIn, isTamed, dwarfType);
         //Geckolib check
         this.noCulling = true;
         this.moveControl = new MovementController(this);
@@ -61,7 +61,7 @@ public class DwarfBlacksmithEntity extends TraderEntity implements IAnimatable {
     }
 
     public DwarfBlacksmithEntity(EntityType<? extends TraderEntity> type, World worldIn) {
-        super(type, worldIn, false);
+        super(type, worldIn, false, 0);
         //Geckolib check
         this.noCulling = true;
         this.moveControl = new MovementController(this);
@@ -69,7 +69,7 @@ public class DwarfBlacksmithEntity extends TraderEntity implements IAnimatable {
     }
 
     public DwarfBlacksmithEntity(World worldIn, boolean isTamed, BlockPos pos) {
-        this(ModEntityTypes.DWARF_BLACKSMITH.get(), worldIn, isTamed);
+        this(ModEntityTypes.DWARF_BLACKSMITH.get(), worldIn, isTamed, 0);
         //Geckolib check
         this.noCulling = true;
         this.moveControl = new MovementController(this);

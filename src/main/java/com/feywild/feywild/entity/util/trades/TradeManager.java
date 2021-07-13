@@ -1,12 +1,12 @@
 package com.feywild.feywild.entity.util.trades;
 
 
+import com.feywild.feywild.FeywildMod;
 import com.feywild.feywild.item.ModItems;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.item.ItemStack;
 import net.minecraft.profiler.IProfiler;
 import net.minecraft.resources.IFutureReloadListener;
@@ -16,7 +16,6 @@ import net.minecraft.util.ResourceLocation;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -25,18 +24,19 @@ import java.util.concurrent.Executor;
 
 import static com.feywild.feywild.entity.util.trades.DwarvenTrades.*;
 
-public class TamedTradeManager implements IFutureReloadListener {
+public class TradeManager implements IFutureReloadListener {
 
     private static final Gson GSON = new GsonBuilder().create();
-    private static TamedTradeManager instance;
+    private static TradeManager instance;
     private static String tamedPaths[] = {"feywild_trades/tamed/food", "feywild_trades/tamed/loot"};
     private static String untamedPaths[] = {"feywild_trades/untamed", "feywild_trades/tamed/static"};
+    private static String marketPath[] = {"feywild_trades/market/miner"};
 
-    public static TamedTradeManager instance()
+    public static TradeManager instance()
     {
         if(instance == null)
         {
-            instance = new TamedTradeManager();
+            instance = new TradeManager();
         }
         return instance;
     }
@@ -75,7 +75,7 @@ public class TamedTradeManager implements IFutureReloadListener {
 
 
                     } catch (IOException e) {
-                        System.out.print("You are not abiding by the rules of the feywild! (Tamed trade setup is wrong)");
+                        FeywildMod.LOGGER.fatal("You are not abiding by the rules of the feywild! (Tamed trade setup is wrong)");
                         e.printStackTrace();
                     }
                 });
@@ -106,7 +106,29 @@ public class TamedTradeManager implements IFutureReloadListener {
                                     break;
                             }
                     } catch (IOException e) {
-                        System.out.print("You are not abiding by the rules of the feywild! (Untamed trade setup is wrong)");
+                        FeywildMod.LOGGER.fatal("You are not abiding by the rules of the feywild! (Untamed trade setup is wrong)");
+                        e.printStackTrace();
+                    }
+                });
+                DWARVEN_TRADES = toIntMap(ImmutableMap.of(
+                        1,getTrades(untamedLevel1),2, getTrades(untamedLevel2),3, getTrades(Collections.singletonList(new SimplyTrade(new ItemStack(ModItems.LESSER_FEY_GEM.get(), 20), new ItemStack(ModItems.SUMMONING_SCROLL_DWARF_BLACKSMITH.get(), 1), 1, 1, 10)
+                        ))));
+            }
+
+            for(String path : marketPath){
+                List<ResourceLocation> resources = (List<ResourceLocation>) iResourceManager.listResources(path, s -> s.endsWith(".json"));
+
+                resources.forEach(resourceLocation -> {
+
+                    try (InputStream stream = iResourceManager.getResource(resourceLocation).getInputStream(); Reader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
+
+                        List<DwarvenTrades.SimplyTrade> trades = untamedSerializer.deserialize(Objects.requireNonNull(JSONUtils.fromJson(GSON, reader, JsonObject.class)));
+                        if(path.endsWith("miner")){
+                            minerTrades.addAll(trades);
+                        }
+
+                    } catch (IOException e) {
+                        FeywildMod.LOGGER.fatal("You are not abiding by the rules of the feywild! (Market trade setup is wrong)");
                         e.printStackTrace();
                     }
                 });

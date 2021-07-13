@@ -1,0 +1,58 @@
+{
+  "type":"dwarf_trade",
+  "pool": [
+    {
+      "output": {
+        "item": "minecraft:stone",
+        "count": 32
+      },
+      "input": {
+        "item": "feywild:lesser_fey_gem",
+        "count": 3
+      },
+      "maxUses" : 100,
+      "givenXp" : 1,
+      "priceMult": 0.05
+    },
+    {
+      "output": {
+        "item": "minecraft:andesite",
+        "count": 32
+      },
+      "input": {
+        "item": "feywild:lesser_fey_gem",
+        "count": 3
+      },
+      "maxUses" : 100,
+      "givenXp" : 1,
+      "priceMult": 0.05
+    },
+    {
+      "output": {
+        "item": "minecraft:granite",
+        "count": 32
+      },
+      "input": {
+        "item": "feywild:lesser_fey_gem",
+        "count": 3
+      },
+      "maxUses" : 100,
+      "givenXp" : 1,
+      "priceMult": 0.05
+    },
+    {
+      "output": {
+        "item": "minecraft:diorite",
+        "count": 32
+      },
+      "input": {
+        "item": "feywild:lesser_fey_gem",
+        "count": 3
+      },
+      "maxUses" : 100,
+      "givenXp" : 1,
+      "priceMult": 0.05
+    }
+
+  ]
+}

@@ -24,6 +24,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class TraderEntity extends AbstractVillagerEntity implements IReputationTracking {
 
@@ -35,14 +36,16 @@ public class TraderEntity extends AbstractVillagerEntity implements IReputationT
     private boolean increaseProfessionLevelOnUpdate;
     private int villagerLevel;
     private boolean isTamed;
+    protected int dwarfType;
     //restock
     private long lastRestockGameTime;
     private int numberOfRestocksToday;
     private long lastRestockCheckDayTime;
 
-    public TraderEntity(EntityType<? extends AbstractVillagerEntity> entity, World world, boolean isTamed) {
+    public TraderEntity(EntityType<? extends AbstractVillagerEntity> entity, World world, boolean isTamed, int dwarfType) {
         super(entity, world);
         this.isTamed = isTamed;
+        this.dwarfType = dwarfType;
     }
 
     protected void rewardTradeXp(MerchantOffer p_213713_1_) {
@@ -63,27 +66,38 @@ public class TraderEntity extends AbstractVillagerEntity implements IReputationT
 
     @Override
     protected void updateTrades() {
+        MerchantOffers merchantoffers = this.getOffers();
 
-        if (isTamed) {
-            VillagerTrades.ITrade[] dwarvenTradeList = DwarvenTrades.DWARVEN_BLACKSMITH_TRADES.get(1);
-            setVillagerLevel(1);
-            if (dwarvenTradeList != null) {
-                MerchantOffers merchantoffers = this.getOffers();
-                this.addOffersFromItemListings(merchantoffers, dwarvenTradeList, 4);
-            }
-        } else {
+        switch (dwarfType){
+            case 0:
+                // Normal Dwarf Trades
+                if (isTamed) {
+                    VillagerTrades.ITrade[] dwarvenTradeList = DwarvenTrades.DWARVEN_BLACKSMITH_TRADES.get(1);
+                    if (dwarvenTradeList != null) {
+                        this.addOffersFromItemListings(merchantoffers, dwarvenTradeList, 4);
+                    }
+                } else {
 
-            VillagerTrades.ITrade[] dwarvenTradeList = DwarvenTrades.DWARVEN_TRADES.get(1);
-            setVillagerLevel(1);
-            if (dwarvenTradeList != null) {
-                MerchantOffers merchantoffers = this.getOffers();
-                this.addOffersFromItemListings(merchantoffers, dwarvenTradeList, 2);
-            }
+                    VillagerTrades.ITrade[] dwarvenTradeList = DwarvenTrades.DWARVEN_TRADES.get(1);
+                    if (dwarvenTradeList != null) {
+                        this.addOffersFromItemListings(merchantoffers, dwarvenTradeList, 2);
+                    }
+                }
+                break;
+            case 1:
+                //Miner Dwarf Trades
+                VillagerTrades.ITrade[] dwarvenTradeList = DwarvenTrades.getTrades(DwarvenTrades.minerTrades);
+                if(dwarvenTradeList != null){
+                    this.addOffersFromItemListings(merchantoffers,dwarvenTradeList,3);
+                }
+                break;
+
         }
+
+        setVillagerLevel(1);
     }
 
     protected void updateTradesAgain(int number) {
-
         if (isTamed) {
             VillagerTrades.ITrade[] dwarvenTradeList = DwarvenTrades.DWARVEN_BLACKSMITH_TRADES.get(number);
             setVillagerLevel(number);
@@ -143,7 +157,7 @@ public class TraderEntity extends AbstractVillagerEntity implements IReputationT
 
     private boolean shouldIncreaseLevel() {
         int i = this.getVillagerData().getLevel();
-        return VillagerData.canLevelUp(i) && this.villagerXp >= VillagerData.getMaxXpPerLevel(i);
+        return VillagerData.canLevelUp(i) && this.villagerXp >= VillagerData.getMaxXpPerLevel(i) && dwarfType == 0;
     }
 
     protected void customServerAiStep() {

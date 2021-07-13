@@ -29,6 +29,7 @@ public class DwarvenTrades {
     public static final List<TradeData> commonLoot = new LinkedList<>(), legendaryLoot = new LinkedList<>();
     public static final List<TradeData> commonFood = new LinkedList<>(), legendaryFood = new LinkedList<>();
     public static final List<SimplyTrade> untamedLevel1 = new LinkedList<>(), untamedLevel2 = new LinkedList<>();
+    public static final List<SimplyTrade> minerTrades = new LinkedList<>();
 
     public static Int2ObjectMap<VillagerTrades.ITrade[]> DWARVEN_TRADES;
 
@@ -64,9 +65,7 @@ public class DwarvenTrades {
         return trades1;
     }
 
-    // Ancient's note : why where there over 9000 types of trades that did the same thing?
-
-    static class SimplyTrade implements VillagerTrades.ITrade {
+    public static class SimplyTrade implements VillagerTrades.ITrade {
 
         private final ItemStack itemStack, itemStackOut;
 

@@ -5,7 +5,7 @@ import com.feywild.feywild.container.ModContainers;
 import com.feywild.feywild.entity.DwarfBlacksmithEntity;
 import com.feywild.feywild.entity.ModEntityTypes;
 import com.feywild.feywild.entity.util.FeyEntity;
-import com.feywild.feywild.entity.util.trades.TamedTradeManager;
+import com.feywild.feywild.entity.util.trades.TradeManager;
 import com.feywild.feywild.events.ModEvents;
 import com.feywild.feywild.events.SpawnData;
 import com.feywild.feywild.item.ModItems;
@@ -106,7 +106,7 @@ public class FeywildMod {
 
     //This might have a conflict when merging with the quests
     public void reloadStuff(AddReloadListenerEvent event) {
-        event.addListener(TamedTradeManager.instance());
+        event.addListener(TradeManager.instance());
         event.addListener(QuestManager.instance());
     }
 
@@ -118,7 +118,7 @@ public class FeywildMod {
         structureQueue(event);
         FeywildPacketHandler.register();
         SpawnData.registerSpawn();
-        TamedTradeManager.instance();
+        TradeManager.instance();
         QuestManager.instance();
 
     }

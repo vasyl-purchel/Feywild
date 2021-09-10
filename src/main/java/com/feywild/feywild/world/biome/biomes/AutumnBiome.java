@@ -67,7 +67,7 @@ public class AutumnBiome extends BaseBiome {
                         .waterFogColor(0x232317)
                         .fogColor(0xc0d8ff)
                         .skyColor(BiomeMaker.calculateSkyColor(0.8F))
-                        .backgroundMusic(new BackgroundMusicSelector(ModSoundEvents.autumnSoundtrack, 6000, 12000, true))
+                        .backgroundMusic(new BackgroundMusicSelector(ModSoundEvents.autumnSoundtrack, 6000, 12000, false))
                         .foliageColorOverride(0x6a7039)
                         .ambientParticle(new ParticleEffectAmbience(ParticleTypes.WITCH, 0.001F))
                         .grassColorModifier(BiomeAmbience.GrassColorModifier.SWAMP).build())

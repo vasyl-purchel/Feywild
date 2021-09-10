@@ -69,7 +69,7 @@ public class WinterBiome extends BaseBiome {
                         .waterFogColor(0x50533)
                         .fogColor(0xc0d8ff)
                         .skyColor(BiomeMaker.calculateSkyColor(0))
-                        .backgroundMusic(new BackgroundMusicSelector(ModSoundEvents.winterSoundtrack, 6000, 12000, true))
+                        .backgroundMusic(new BackgroundMusicSelector(ModSoundEvents.winterSoundtrack, 6000, 12000, false))
                         .ambientParticle(new ParticleEffectAmbience(ParticleTypes.ENCHANTED_HIT, 0.001F))
                         .build())
                 .mobSpawnSettings(mobSpawnBuilder.build()).generationSettings(biomeGenerationSettingsBuilder.build()).build();

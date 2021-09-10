@@ -58,7 +58,7 @@ public class SpringBiome extends BaseBiome {
                         .waterFogColor(0x50533)
                         .fogColor(0xc0d8ff)
                         .skyColor(BiomeMaker.calculateSkyColor(0.7F))
-                        .backgroundMusic(new BackgroundMusicSelector(ModSoundEvents.springSoundtrack, 6000, 12000, true))
+                        .backgroundMusic(new BackgroundMusicSelector(ModSoundEvents.springSoundtrack, 6000, 12000, false))
                         .ambientParticle(new ParticleEffectAmbience(ParticleTypes.HAPPY_VILLAGER, 0.001F))
                         .build())
                 .mobSpawnSettings(mobSpawnBuilder.build()).generationSettings(biomeGenerationSettingsBuilder.build()).build();

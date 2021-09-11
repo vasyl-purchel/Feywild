@@ -140,7 +140,7 @@ public class WorldGenConfig {
 
             @Config("Maximum height for fey gems vines")
             @IntRange(min = 0, max = 255)
-            public static int max_height = 5;
+            public static int max_height = 45;
         }
     }
 
